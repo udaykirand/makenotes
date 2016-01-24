@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css"
+	href="http://fonts.googleapis.com/css?family=Josefin+Slab">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="js/makenotes.js"></script>
+	
+<title>Make Notes</title>
+</head>
+<body>
+	<div id="page" style="width: 100%; margin: 0 auto;">
+		<div id="calling"
+			style="float: right; font-family: 'Josefin Slab', serif; font-size: 22pt; color: beige; margin-top: 15px;">
+			<a>Make Notes</a>
+		</div>
+		<br>
+
+		<ul class="mainmenu" style="margin-bottom: 16px;">
+			<li><a href="#" onclick="javascript:create();">Create Notes</a></li>
+			<li><a href="#" onclick="javascript:getAllNotes();">List all notes</a></li>
+			<li><a href="#" onclick="javascript:loadNotes();">Delete notes</a></li>
+		</ul><br>
+		<hr style="margin-left: 25px;width: 500px;">
+		<div id = "create" style="display:block;margin-left:30px;">
+		<h3><a href="#" style="font-family: 'Josefin Slab';margin-top:15px;">Create Notes</a></h3>
+			<input type="text" id="header" value="Notes" style="margin-top:10px;margin-bottom:10px;"><br>
+			<input type="textarea" id="notesBody" style="width:400px;height:50px;margin-top:10px;"><br>
+			<input type="button" onclick="javascript:submitNotes();" style="margin-top:10px;" value="submit">
+			<input type="button" onclick="javascript:resetNotes();" style="margin-top:10px;" value="reset">
+		</div>
+		<div id = "list" style="display:none;margin-top:15px;">
+		<h3><a href="#" style="font-family: 'Josefin Slab'; margin-top:15px;margin-left:30px;">Notes List</a></h3>
+			<ul id="notesList" style="font-family: 'Josefin Slab'; margin-top:15px;margin-left:30px;margin-bottom: 15px;">
+			</ul>
+		</div>
+		<br>
+		<hr style="margin-left: 25px;width: 500px;/* margin-top: 10px; */">
+		<div id = "noteHead" style="display:none;margin-left:30px;font-size: 25px;">
+			
+		</div>
+		<div id = "noteBody" style="display:none;margin-left:30px;font-size: 20px;">
+			
+		</div>
+	</div>
+</body>
+</html>
