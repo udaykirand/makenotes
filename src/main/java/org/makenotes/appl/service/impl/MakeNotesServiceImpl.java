@@ -1,5 +1,8 @@
 package org.makenotes.appl.service.impl;
 
+import org.audit4j.core.annotation.Audit;
+import org.audit4j.core.annotation.AuditField;
+import org.audit4j.core.annotation.SelectionType;
 import org.makenotes.appl.dao.MakeNotesDAO;
 import org.makenotes.appl.entity.NotesEntity;
 import org.makenotes.appl.model.NotesModel;
@@ -14,8 +17,10 @@ public class MakeNotesServiceImpl implements MakeNotesService {
 	private final static Logger LOG = LoggerFactory.getLogger(MakeNotesServiceImpl.class);
 	@Autowired
 	private MakeNotesDAO makeNotesDAO;
+	
 	@Override
-	public int createNotes(NotesModel notesModel) {
+	@Audit(selection=SelectionType.MARKED)
+	public int createNotes(@AuditField(field = "id") NotesModel notesModel) {
 		LOG.info("in createnotes service "+notesModel.getNotesBody());
 		NotesEntity notesEnt = new NotesEntity();
 		notesEnt.setHeader(notesModel.getHeader());
@@ -34,7 +39,8 @@ public class MakeNotesServiceImpl implements MakeNotesService {
 		return makeNotesDAO.findAll();
 	}
 	@Override
-	public NotesEntity updateNotes(int notesId, NotesModel notesModel) throws Exception {
+	@Audit(selection=SelectionType.MARKED)
+	public NotesEntity updateNotes(@AuditField(field = "id") int notesId, NotesModel notesModel) throws Exception {
 		if (notesModel == null) {
 			throw new Exception("Invalid input");
 		}
